@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import sys
 import json
+import argparse
+
+webhook_url = 'https://hooks.slack.com/services/' + process.env.SLACK_WEBHOOK
 
 rdjson = {
     'source': {
@@ -14,6 +17,9 @@ rdjson = {
 
 
 def main():
+    args = parser.parse_args()
+    webhook_url = webhook_url + args.slack_token
+
     baseline = json.load(sys.stdin)
     if not baseline['results']:
         baseline['results'] = {}
@@ -42,12 +48,27 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
+        slack_notification(str(rdjson))
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
         return 1
     return 0
 
+def slack_notification(message):
+    try:
+        slack_message = {'text': message}
+
+        http = urllib3.PoolManager()
+        response = http.request('POST',
+                                webhook_url,
+                                body = json.dumps(slack_message),
+                                headers = {'Content-Type': 'application/json'},
+                                retries = False)
+    except:
+        traceback.print_exc()
+
+    return True
 
 if __name__ == '__main__':
     sys.exit(main())

@@ -47,6 +47,10 @@ Optional. Additional reviewdog flags.
 Optional. Flags and args of detect-secrets command.
 The default is `--all-files --force-use-all-plugins`.
 
+### `slack_token`
+
+Optional. Must be in form of `slack_token: ${{ secrets.slack_token }}`'.
+
 ## Example usage
 
 ### [.github/workflows/reviewdog.yml](.github/workflows/reviewdog.yml)
