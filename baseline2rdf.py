@@ -20,7 +20,6 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-slack_token', dest='slack_token', type=str, help='Slack Token')
     args = parser.parse_args()
-    raise Exception(args.slack_token)
     webhook_url = 'https://hooks.slack.com/services/' + args.slack_token
     print(webhook_url)
 
