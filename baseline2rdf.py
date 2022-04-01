@@ -4,8 +4,6 @@ import sys
 import json
 import argparse
 
-webhook_url = 'https://hooks.slack.com/services/' + process.env.SLACK_WEBHOOK
-
 rdjson = {
     'source': {
         'name': 'detect-secrets',
