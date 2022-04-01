@@ -3,7 +3,7 @@
 import sys
 import json
 import argparse
-import urllib
+import urllib3
 
 webhook_url=''
 
