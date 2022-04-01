@@ -52,14 +52,14 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
-        slack_notification(str(rdjson))
+        slack_notification(str(rdjson), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
         return 1
     return 0
 
-def slack_notification(message):
+def slack_notification(message, webhook_url):
     try:
         slack_message = {'text': message}
 
@@ -70,7 +70,7 @@ def slack_notification(message):
                                 headers = {'Content-Type': 'application/json'},
                                 retries = False)
     except Exception as error:
-         sys.stderr.write('Error: %s\n' % error)
+         sys.stderr.write('Error: %s\n' % webhook_url)
 
     return True
 
