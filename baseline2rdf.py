@@ -22,8 +22,6 @@ def main():
     parser.add_argument('-slack_token', dest='slack_token', type=str, help='Slack Token')
     args = parser.parse_args()
     webhook_url = 'https://hooks.slack.com/services/' + args.slack_token
-    print(webhook_url)
-
     baseline = json.load(sys.stdin)
     if not baseline['results']:
         baseline['results'] = {}
