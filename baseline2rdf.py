@@ -4,7 +4,7 @@ import sys
 import json
 import argparse
 
-webhook_url = 'https://hooks.slack.com/services/'
+webhook_url=''
 
 rdjson = {
     'source': {
@@ -19,7 +19,7 @@ rdjson = {
 def main():
     parser = argparse.ArgumentParser()
     args = parser.parse_known_args()
-    webhook_url = webhook_url + args.slack_token
+    webhook_url = 'https://hooks.slack.com/services/' + args.slack_token
     print(webhook_url)
 
     baseline = json.load(sys.stdin)
