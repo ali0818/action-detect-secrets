@@ -68,8 +68,8 @@ def slack_notification(message):
                                 body = json.dumps(slack_message),
                                 headers = {'Content-Type': 'application/json'},
                                 retries = False)
-    except:
-        traceback.print_exc()
+    except Exception as error:
+         sys.stderr.write('Error: %s\n' % error)
 
     return True
 
