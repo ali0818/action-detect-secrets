@@ -15,6 +15,7 @@ rdjson = {
 
 
 def main():
+    parser = argparse.ArgumentParser()
     args = parser.parse_args()
     webhook_url = webhook_url + args.slack_token
 
