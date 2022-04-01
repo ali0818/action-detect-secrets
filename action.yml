@@ -31,6 +31,9 @@ inputs:
   detect_secrets_flags:
     description: Flags and args of detect-secrets command. The default is '--all-files --force-use-all-plugins'.
     default: --all-files --force-use-all-plugins
+  slack_token:
+    description: Slack Token.
+    default: ""  
 runs:
   using: docker
   image: Dockerfile
