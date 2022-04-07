@@ -51,7 +51,6 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
-        sys.stdout.write(args.git_url)
         run_num = os.getenv("GITHUB_RUN_NUMBER", default=1)
         slack_notification(str(run_num), webhook_url)
         slack_notification(str(args.git_url), webhook_url)
