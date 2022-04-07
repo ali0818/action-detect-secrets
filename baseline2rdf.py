@@ -20,6 +20,7 @@ rdjson = {
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-slack_token', dest='slack_token', type=str, help='Slack Token')
+    parser.add_argument('-giturl', dest='git_url', type=str, help='Git URL')
     args = parser.parse_args()
     webhook_url = 'https://hooks.slack.com/services/' + args.slack_token
     baseline = json.load(sys.stdin)
@@ -50,7 +51,7 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
-        slack_notification(${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}, webhook_url)
+        slack_notification(str(git_url), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
