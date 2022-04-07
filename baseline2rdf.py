@@ -51,6 +51,7 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
+        sys.stdout.write(args.git_url)
         slack_notification(str(args.git_url), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
