@@ -14,5 +14,5 @@ detect-secrets scan ${INPUT_DETECT_SECRETS_FLAGS} ${INPUT_WORKDIR} \
         -reporter="${INPUT_REPORTER:-github-pr-check}" \
         -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
         -level="${INPUT_LEVEL}" \
-        ${INPUT_REVIEWDOG_FLAGS}
+        ${INPUT_REVIEWDOG_FLAGS} \
     | slack -slack_token="${INPUT_SLACK_TOKEN}"   
