@@ -8,11 +8,10 @@ detect-secrets --version
 
 detect-secrets scan ${INPUT_DETECT_SECRETS_FLAGS} ${INPUT_WORKDIR} \
     | baseline2rdf -slack_token="${INPUT_SLACK_TOKEN}" \
-    | a=reviewdog -f=rdjson \
+    | reviewdog -f=rdjson \
         -name="${INPUT_NAME:-detect-secrets}" \
         -filter-mode="${INPUT_FILTER_MODE:-added}" \
         -reporter="${INPUT_REPORTER:-github-pr-check}" \
         -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
         -level="${INPUT_LEVEL}" \
-        ${INPUT_REVIEWDOG_FLAGS} \
-    > echo $a 
+        ${INPUT_REVIEWDOG_FLAGS} >> echo  
