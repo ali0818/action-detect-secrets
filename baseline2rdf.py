@@ -20,7 +20,7 @@ rdjson = {
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-slack_token', dest='slack_token', type=str, help='Slack Token')
-    parser.add_argument('-giturl', dest='git_url', type=str, help='Git URL')
+    parser.add_argument('-git_url', dest='git_url', type=str, help='Git URL')
     args = parser.parse_args()
     webhook_url = 'https://hooks.slack.com/services/' + args.slack_token
     baseline = json.load(sys.stdin)
