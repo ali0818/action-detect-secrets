@@ -55,7 +55,8 @@ def main():
         run_ref = os.getenv("GITHUB_REF", default=1)
         run_ref = run_ref.lstrip("refs/")
         run_repo = os.getenv("GITHUB_REPOSITORY", default=1)
-        slack_notification(str( 'https://github.com/' + run_repo + '/' +  run_ref), webhook_url)
+        link = 'https://github.com/' + run_repo + '/' +  run_ref;
+        slack_notification(str( 'Credential Scan ' + '\n' + 'Repository: ' + run_repo  + '\n' + 'Result: ' + link), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
