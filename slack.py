@@ -8,8 +8,8 @@ import urllib3
 webhook_url=''
 
 def main():
-    baseline = json.load(sys.stdin)
-    sys.stderr.write('Error: %s\n' % baseline)
+    # baseline = json.load(sys.stdin)
+    sys.stderr.write('Error: %s\n' % sys.stdin)
     parser = argparse.ArgumentParser()
     parser.add_argument('-slack_token', dest='slack_token', type=str, help='Slack Token')
     args = parser.parse_args()
