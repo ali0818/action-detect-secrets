@@ -53,7 +53,7 @@ def main():
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
         run_ref = os.getenv("GITHUB_REF", default=1)
-        run_ref = run_ref.lstrip("r/")
+        run_ref = run_ref.lstrip("refs/")
         run_repo = os.getenv("GITHUB_REPOSITORY", default=1)
         slack_notification(str( 'https://github.com/' + run_repo + '/' +  run_ref), webhook_url)
         sys.stdout.write('\n')
