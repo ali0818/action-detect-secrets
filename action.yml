@@ -33,9 +33,6 @@ inputs:
     default: --all-files --force-use-all-plugins
   slack_token:
     description: Slack Token.
-    default: "" 
-  git_url:
-    description: GIT URL
     default: ""   
 runs:
   using: docker
