@@ -55,6 +55,8 @@ def main():
         run_ref = os.getenv("GITHUB_REF", default=1)
         run_ref = run_ref.lstrip("refs/")
         run_repo = os.getenv("GITHUB_REPOSITORY", default=1)
+        run_id = os.getenv("GITHUB_RUN_ID", default=1)
+        slack_notification(str(run_id), webhook_url)
         link = 'https://github.com/' + run_repo + '/' +  run_ref;
         if(len(rdjson['diagnostics']) > 0 )
         slack_notification(str( 'Credential Scan ' + '\n' + 'Repository: ' + run_repo  + '\n' + 'Result: ' + link), webhook_url)
