@@ -50,7 +50,7 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
-        slack_notification(str(${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}), webhook_url)
+        slack_notification(${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}, webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
