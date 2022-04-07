@@ -52,17 +52,10 @@ def main():
 
     try:
         sys.stdout.write(json.dumps(rdjson, indent=2, ensure_ascii=False))
-        run_num = os.getenv("GITHUB_RUN_NUMBER", default=1)
-        run_num2 = os.getenv("GITHUB_RUN_ID", default=1)
-        run_num3 = os.getenv("GITHUB_SHA", default=1)
-        run_num4 = os.getenv("GITHUB_REF", default=1)
-        run_num5 = os.getenv("GITHUB_REPOSITORY", default=1)
-        slack_notification(str(run_num), webhook_url)
-        slack_notification(str(run_num2), webhook_url)
-        slack_notification(str(run_num3), webhook_url)
-        slack_notification(str(run_num4), webhook_url)
-        slack_notification(str(run_num5), webhook_url)
-        slack_notification(str(args.git_url), webhook_url)
+        run_ref = os.getenv("GITHUB_REF", default=1)
+        run_ref = run_ref.lstrip("r/")
+        run_repo = os.getenv("GITHUB_REPOSITORY", default=1)
+        slack_notification(str( 'https://github.com/' + run_repo + '/' +  run_ref), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
