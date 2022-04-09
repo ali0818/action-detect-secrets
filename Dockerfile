@@ -7,6 +7,8 @@ RUN set -eux \
     && apt-get install -y --no-install-recommends \
         git \
         wget \
+        curl \
+        jq \
     && wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION} \
     && pip install detect-secrets
 
