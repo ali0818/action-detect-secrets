@@ -60,7 +60,7 @@ def main():
         pr = 'https://github.com/' + run_repo + '/' +  run_ref;
         run = run_server + "/" + run_repo + "/actions/runs/" + run_id
         if(len(rdjson['diagnostics']) > 0 ):
-            slack_notification(str( 'Credential Scan ' + '\n' + 'Repository: ' + run_repo  + '\n' + 'PR Link: ' + pr  + '\n' + 'Scan Result: ' + run), webhook_url)
+            slack_notification(str( 'Credential Scan ' + '\n' + 'Repository: ' + run_repo  + '\n' + 'PR Link: ' + pr  + '\n' + 'Scan Result: ' + os.getenv("JOB_URL", default=1)), webhook_url)
         sys.stdout.write('\n')
     except Exception as error:
         sys.stderr.write('Error: %s\n' % error)
