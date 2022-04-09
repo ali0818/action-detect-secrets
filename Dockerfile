@@ -13,7 +13,6 @@ RUN set -eux \
     && pip install detect-secrets
 
 COPY baseline2rdf.py /usr/local/bin/baseline2rdf
-COPY slack.py /usr/local/bin/slack
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
