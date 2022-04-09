@@ -55,7 +55,7 @@ def main():
         run_ref = os.getenv("GITHUB_REF", default=1)
         run_ref = run_ref.lstrip("refs/")
         run_repo = os.getenv("GITHUB_REPOSITORY", default=1)
-        run_id = os.getenv("GITHUB_RUN_ID", default=1)
+        run_id = os.getenv("JOB_ID", default=1)
         run_server = os.getenv("GITHUB_SERVER_URL", default=1)        
         pr = 'https://github.com/' + run_repo + '/' +  run_ref;
         run = run_server + "/" + run_repo + "/actions/runs/" + run_id
